@@ -1,5 +1,6 @@
 import math
 import random
+from captcha import captcha
 special_characters = "!@#$%^&*()_+-=[]|;:'\",.<>?/"
 upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 digit="1234567890"
@@ -52,9 +53,9 @@ while reset=="Y":
               digits = [int(c) for c in pas if c.isdigit()]
               total = sum(digits)
               has_month = any(m in pas for m in month)
-              has_captcha = all(m in password for m in captcha)
-              if total==25 and has_special and has_upper and has_digit and has_month and all(m in password for m in captcha):
-                print("Yes")
+              has_captcha = all(m in pas for m in captcha)
+              if total==25 and has_special and has_upper and has_digit and has_month and has_captcha:
+                print("yes")
               else:
                 print("you messed up")
                 reset=input("do you want to restart? Y or N")
